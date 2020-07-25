@@ -17,6 +17,7 @@
 		B58F3A5D24CC68D400B4A32D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F3A5C24CC68D400B4A32D /* UIColor+Ext.swift */; };
 		B58F3A6024CC83D800B4A32D /* ShimmerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F3A5E24CC83D800B4A32D /* ShimmerTableViewCell.swift */; };
 		B58F3A6124CC83D800B4A32D /* ShimmerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B58F3A5F24CC83D800B4A32D /* ShimmerTableViewCell.xib */; };
+		B58F3A6524CC97E100B4A32D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B58F3A6424CC97E100B4A32D /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B58F3A5C24CC68D400B4A32D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		B58F3A5E24CC83D800B4A32D /* ShimmerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerTableViewCell.swift; sourceTree = "<group>"; };
 		B58F3A5F24CC83D800B4A32D /* ShimmerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShimmerTableViewCell.xib; sourceTree = "<group>"; };
+		B58F3A6424CC97E100B4A32D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		B58F3A4524CC5F9100B4A32D /* ShimmerTableView */ = {
 			isa = PBXGroup;
 			children = (
+				B58F3A6424CC97E100B4A32D /* .gitignore */,
 				B58F3A4624CC5F9100B4A32D /* AppDelegate.swift */,
 				B58F3A4824CC5F9100B4A32D /* SceneDelegate.swift */,
 				B58F3A4F24CC5F9200B4A32D /* Assets.xcassets */,
@@ -137,6 +140,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58F3A6524CC97E100B4A32D /* .gitignore in Resources */,
 				B58F3A5324CC5F9200B4A32D /* LaunchScreen.storyboard in Resources */,
 				B58F3A6124CC83D800B4A32D /* ShimmerTableViewCell.xib in Resources */,
 				B58F3A5024CC5F9200B4A32D /* Assets.xcassets in Resources */,
