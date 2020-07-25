@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     private var tableView: UITableView!
     fileprivate let cellID = "cellID"
+    private let cellHeight: CGFloat = 60
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class ViewController: UIViewController {
         tableView.register(TableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.reloadData()
     }
     
     
@@ -41,16 +43,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return Int(view.frame.height / 60.0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! TableViewCell
+        cell.accessoryType = .disclosureIndicator
+        cell.configureShimmer(width: view.frame.width, height: cellHeight)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return cellHeight
     }
     
     

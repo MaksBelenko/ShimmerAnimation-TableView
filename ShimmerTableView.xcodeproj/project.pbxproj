@@ -15,6 +15,8 @@
 		B58F3A5324CC5F9200B4A32D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58F3A5124CC5F9200B4A32D /* LaunchScreen.storyboard */; };
 		B58F3A5B24CC634900B4A32D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F3A5A24CC634900B4A32D /* TableViewCell.swift */; };
 		B58F3A5D24CC68D400B4A32D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F3A5C24CC68D400B4A32D /* UIColor+Ext.swift */; };
+		B58F3A6024CC83D800B4A32D /* ShimmerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F3A5E24CC83D800B4A32D /* ShimmerTableViewCell.swift */; };
+		B58F3A6124CC83D800B4A32D /* ShimmerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B58F3A5F24CC83D800B4A32D /* ShimmerTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		B58F3A5424CC5F9200B4A32D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B58F3A5A24CC634900B4A32D /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		B58F3A5C24CC68D400B4A32D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		B58F3A5E24CC83D800B4A32D /* ShimmerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerTableViewCell.swift; sourceTree = "<group>"; };
+		B58F3A5F24CC83D800B4A32D /* ShimmerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShimmerTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				B58F3A4A24CC5F9100B4A32D /* ViewController.swift */,
 				B58F3A5A24CC634900B4A32D /* TableViewCell.swift */,
 				B58F3A5C24CC68D400B4A32D /* UIColor+Ext.swift */,
+				B58F3A5E24CC83D800B4A32D /* ShimmerTableViewCell.swift */,
+				B58F3A5F24CC83D800B4A32D /* ShimmerTableViewCell.xib */,
 			);
 			path = ShimmerTableView;
 			sourceTree = "<group>";
@@ -132,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B58F3A5324CC5F9200B4A32D /* LaunchScreen.storyboard in Resources */,
+				B58F3A6124CC83D800B4A32D /* ShimmerTableViewCell.xib in Resources */,
 				B58F3A5024CC5F9200B4A32D /* Assets.xcassets in Resources */,
 				B58F3A4E24CC5F9100B4A32D /* Main.storyboard in Resources */,
 			);
@@ -147,6 +154,7 @@
 				B58F3A4B24CC5F9100B4A32D /* ViewController.swift in Sources */,
 				B58F3A5B24CC634900B4A32D /* TableViewCell.swift in Sources */,
 				B58F3A5D24CC68D400B4A32D /* UIColor+Ext.swift in Sources */,
+				B58F3A6024CC83D800B4A32D /* ShimmerTableViewCell.swift in Sources */,
 				B58F3A4724CC5F9100B4A32D /* AppDelegate.swift in Sources */,
 				B58F3A4924CC5F9100B4A32D /* SceneDelegate.swift in Sources */,
 			);

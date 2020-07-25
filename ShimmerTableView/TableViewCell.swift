@@ -10,27 +10,8 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
-    private var testLabel : UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.textAlignment = .left
-        label.text = "Test label"
-        label.textColor = .black
-        return label
-    }()
-    
-    private var bottomBoxView : UIView = {
-        let view = UIView()
-        view.backgroundColor = .bottomGray
-        return view
-    }()
-    
-    private var topBoxView : UIView = {
-        let view = UIView()
-        view.backgroundColor = .shimmerGray
-        return view
-    }()
-    
+    private let bottomBoxColor = UIColor.bottomGray
+
     lazy var gradientLayer: CAGradientLayer = {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.bounds
@@ -47,63 +28,101 @@ class TableViewCell: UITableViewCell {
         animation.fromValue = [-1.0, -0.5, 0.0]
         animation.toValue = [1.0, 1.5, 2.0]
         animation.repeatCount = .infinity
-        animation.duration = 0.9
+        animation.duration = 1
         return animation
     }()
     
     
     
     // MARK: - Lifecycle
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        configureBox()
-//        addSubview(testLabel)
-//        testLabel.translatesAutoresizingMaskIntoConstraints = false
-//        testLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-//        testLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.accessoryType = .disclosureIndicator
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    
+    
+    // MARK: - Configure cell method
+    func configureShimmer(width: CGFloat, height: CGFloat) {
+        configureNameBox()
     }
     
     
     // MARK: - Configure UI
     
-    private func configureBox() {
-        addSubview(bottomBoxView)
-        bottomBoxView.translatesAutoresizingMaskIntoConstraints = false
-        bottomBoxView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        bottomBoxView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+    private func configureNameBox() {
+        let nameBox = getBottomView()
+        addSubview(nameBox)
+        nameBox.translatesAutoresizingMaskIntoConstraints = false
+        nameBox.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        nameBox.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        nameBox.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3).isActive = true
+        nameBox.heightAnchor.constraint(equalToConstant: 19).isActive = true
+        addTopBox(for: nameBox)
         
-        bottomBoxView.heightAnchor.constraint(equalToConstant: frame.height / 1.5).isActive = true
-        bottomBoxView.widthAnchor.constraint(equalToConstant: frame.width / 2).isActive = true
+        let dateBox = getBottomView()
+        addSubview(dateBox)
+        dateBox.translatesAutoresizingMaskIntoConstraints = false
+        dateBox.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        dateBox.topAnchor.constraint(equalTo: nameBox.bottomAnchor, constant: 5).isActive = true
+        dateBox.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5).isActive = true
+        dateBox.heightAnchor.constraint(equalToConstant: 13).isActive = true
+        addTopBox(for: dateBox)
         
-        addSubview(topBoxView)
-        topBoxView.translatesAutoresizingMaskIntoConstraints = false
-        topBoxView.centerYAnchor.constraint(equalTo: bottomBoxView.centerYAnchor).isActive = true
-        topBoxView.centerXAnchor.constraint(equalTo: bottomBoxView.centerXAnchor).isActive = true
+        
+        let priceBox = getBottomView()
+        addSubview(priceBox)
+        priceBox.translatesAutoresizingMaskIntoConstraints = false
+        priceBox.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40).isActive = true
+        priceBox.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        priceBox.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25).isActive = true
+        priceBox.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        addTopBox(for: priceBox)
+        
+    }
+    
+    private func getBottomView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = bottomBoxColor
+        return view
+    }
+    
+    //MARK: - Helpers
+    
+    private func addTopBox(for bottomView: UIView) {
+        let view = UIView()
+        view.backgroundColor = .shimmerGray
+        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leftAnchor.constraint(equalTo: bottomView.leftAnchor).isActive = true
+        view.topAnchor.constraint(equalTo: bottomView.topAnchor).isActive = true
+        view.heightAnchor.constraint(equalTo: bottomView.heightAnchor).isActive = true
+        view.widthAnchor.constraint(equalTo: bottomView.widthAnchor).isActive = true
 
-        topBoxView.heightAnchor.constraint(equalTo: bottomBoxView.heightAnchor).isActive = true
-        topBoxView.widthAnchor.constraint(equalTo: bottomBoxView.widthAnchor).isActive = true
+        addShimmerMask(to: view)
+    }
+
+
+    private func addShimmerMask(to view: UIView) {
+        let gradLayer = createGradientLayer()
+        view.layer.mask = gradLayer
+        gradLayer.add(shimmerAnimation, forKey: shimmerAnimation.keyPath)
+    }
+    
+    
+    func createGradientLayer() -> CAGradientLayer {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.bounds
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.shimmerGray.cgColor, UIColor.clear.cgColor]
+        gradientLayer.locations = [0.0, 0.5, 1.0]
+        self.layer.addSublayer(gradientLayer)
         
-//        layoutIfNeeded()
-        
-        
-        topBoxView.layer.mask = gradientLayer
-        gradientLayer.add(shimmerAnimation, forKey: shimmerAnimation.keyPath)
+        return gradientLayer
     }
 }
