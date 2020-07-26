@@ -49,7 +49,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! TableViewCell
         cell.accessoryType = .disclosureIndicator
-        cell.configureShimmer(width: view.frame.width, height: cellHeight)
+//        cell.configureShimmer(width: view.frame.width, height: cellHeight)
         return cell
     }
     
