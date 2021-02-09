@@ -11,24 +11,19 @@ import UIKit
 class TableViewCell: UITableViewCell {
 
     private let bottomBoxColor = UIColor.bottomGray
-
-    lazy var gradientLayer: CAGradientLayer = {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.bounds
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 1.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.shimmerGray.cgColor, UIColor.clear.cgColor]
-        gradientLayer.locations = [0.0, 0.5, 1.0]
-        return gradientLayer
-    }()
+    
+    private let shimmerCycleDuration = 1.5 //sec
     
     
-    var shimmerAnimation: CABasicAnimation = {
+    private lazy var shimmerAnimation: CABasicAnimation = {
         let animation = CABasicAnimation(keyPath: "locations")
         animation.fromValue = [-1.0, -0.5, 0.0]
         animation.toValue = [1.0, 1.5, 2.0]
         animation.repeatCount = .infinity
-        animation.duration = 1
+        animation.duration = shimmerCycleDuration
+        // sync the times for all cells
+        let ct = CACurrentMediaTime().truncatingRemainder(dividingBy: shimmerCycleDuration * 2)
+        animation.timeOffset = ct
         return animation
     }()
     
@@ -51,7 +46,6 @@ class TableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
     
     
